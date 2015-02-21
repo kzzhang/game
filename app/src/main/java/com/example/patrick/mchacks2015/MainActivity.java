@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -21,19 +20,16 @@ public class MainActivity extends ActionBarActivity {
         //variables
         final TextView timeCountDown = (TextView) this.findViewById(R.id.textCountDown);
 
-        Button button = (Button) this.findViewById(R.id.button);
-        ImageButton rNum1 = (ImageButton) findViewById(R.id.rNum1);
-        ImageButton rNum2 = (ImageButton) findViewById(R.id.rNum2);
-        ImageButton rNum3 = (ImageButton) findViewById(R.id.rNum3);
-        ImageButton rNum4 = (ImageButton) findViewById(R.id.rNum4);
+        Button rNum1 = (Button) findViewById(R.id.rNum1);
+        Button rNum2 = (Button) findViewById(R.id.rNum2);
+        Button rNum3 = (Button) findViewById(R.id.rNum3);
+        Button rNum4 = (Button) findViewById(R.id.rNum4);
         //objects
-
 
         rNum1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iTime++;
-                timeCountDown.setText(String.valueOf(iTime));
+                timeCountDown.setText("8===D!");
             }
         });
 
