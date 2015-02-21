@@ -37,8 +37,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="0" />
 
@@ -50,8 +50,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="1" />
 
@@ -63,8 +63,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="2" />
 
@@ -76,8 +76,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="3" />
 
@@ -89,8 +89,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="4" />
 
@@ -102,8 +102,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="5" />
 
@@ -115,8 +115,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textCountDown"
-            android:layout_alignRight="@+id/rNum4"
-            android:layout_alignEnd="@+id/rNum4"
+            android:layout_alignRight="@+id/rNum3"
+            android:layout_alignEnd="@+id/rNum3"
             android:layout_row="0"
             android:layout_column="6" />
 
@@ -136,7 +136,7 @@
     <Button
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:id="@+id/rNum4"
+        android:id="@+id/rNum3"
         android:background="@drawable/bgnum"
         android:layout_row="0"
         android:layout_column="0"
