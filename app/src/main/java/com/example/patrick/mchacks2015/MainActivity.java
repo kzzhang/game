@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
@@ -12,11 +14,22 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ImageView img = (ImageView) findViewById(R.id.imageView);
 
-        img.setX(100);
-        img.setY(100);
+        //variables
+        ImageButton rNum1 = (ImageButton) findViewById(R.id.rNum1);
+        ImageButton rNum2 = (ImageButton) findViewById(R.id.rNum2);
+        ImageButton rNum3 = (ImageButton) findViewById(R.id.rNum3);
+        ImageButton rNum4 = (ImageButton) findViewById(R.id.rNum4);
+
+        rNum1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         setContentView(R.layout.activity_main);
+
     }
 
 

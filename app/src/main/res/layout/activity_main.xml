@@ -21,13 +21,41 @@
         android:textColor="@color/brightOrange"
         android:paddingBottom="50dp" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/rNum1"
         android:layout_below="@+id/textCountDown"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/bgnum" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rNum2"
+        android:background="@drawable/bgnum"
+        android:layout_below="@+id/textCountDown"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rNum3"
+        android:background="@drawable/bgnum"
+        android:layout_alignTop="@+id/rNum4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rNum4"
+        android:background="@drawable/bgnum"
+        android:layout_below="@+id/rNum2"
+        android:layout_alignLeft="@+id/rNum2"
+        android:layout_alignStart="@+id/rNum2"
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>
