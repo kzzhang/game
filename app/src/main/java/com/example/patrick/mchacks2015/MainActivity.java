@@ -1,5 +1,6 @@
 package com.example.patrick.mchacks2015;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +24,13 @@ public class MainActivity extends ActionBarActivity {
     Button nPlace[] = new Button[4];
     String svaltoget;
     TextView valToGet;
+
+    Boolean timerStat = false;
+    long time = 60000;
+    long delay = 1000;
+    private Button startButton;
+    CountDownTimerActivity timer = new CountDownTimerActivity(time, delay);
+
     int score;
 
     private LinkedList<Character> ops = new LinkedList<> (Arrays.asList('^','/','*','-','+'));
@@ -51,10 +59,43 @@ public class MainActivity extends ActionBarActivity {
 
         valToGet = (TextView) findViewById(R.id.strToGetTo);
 
-        //gen rand #s
-        setRands(10);
+        startButton = (Button) findViewById(R.id.startButton);
 
-        
+
+
+        //gen rand #s
+
+    }
+
+    public class CountDownTimerActivity extends CountDownTimer {
+        public CountDownTimerActivity(long startTime, long interval) {
+            super(startTime, interval);
+        }
+
+        @Override
+        public void onFinish() {
+            startButton.setText("Time's up!");
+            startButton.setBackgroundColor(getResources().getColor(R.color.brightOrange));
+            timerStat = false;
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            startButton.setText("" + millisUntilFinished/1000);
+        }
+    }
+
+    public void startTime(View view){
+        if(!timerStat){
+            score = 0;
+            TextView sc = (TextView) findViewById(R.id.textCountDown);
+            startButton.setBackgroundColor(getResources().getColor(R.color.white));
+            sc.setText(String.valueOf(score));
+            time = 60000;
+            timer.start();
+            timerStat = true;
+            setRands(10);
+        }
     }
 
     private void setRands(int lim){
@@ -80,7 +121,6 @@ public class MainActivity extends ActionBarActivity {
         }
         svaltoget = String.valueOf((int)Double.parseDouble(svaltoget));
         valToGet.setText("="+svaltoget);
-
     }
 
     private String intToChar(int c){
@@ -96,73 +136,76 @@ public class MainActivity extends ActionBarActivity {
             default:
                 return "err";
         }
-
     }
 
     public void buttonClick(View view){
         int tag=0;
-        switch (view.getId()){
-            case R.id.rNum1:
-                tag = 0;
-                break;
-            case R.id.rNum2:
-                tag = 1;
-                break;
-            case R.id.rNum3:
-                tag = 2;
-                break;
-            case R.id.rNum4:
-                tag = 3;
-                break;
-        }
-
-
-        for (int i=0; i<4;i++){
-            if (nPlace[i].getText().equals("") && !rNum[tag].getText().equals("")){
-                nPlace[i].setText(String.valueOf(values[tag]));
-                rNum[tag].setText("");
-                break;
+        if (timerStat) {
+            switch (view.getId()) {
+                case R.id.rNum1:
+                    tag = 0;
+                    break;
+                case R.id.rNum2:
+                    tag = 1;
+                    break;
+                case R.id.rNum3:
+                    tag = 2;
+                    break;
+                case R.id.rNum4:
+                    tag = 3;
+                    break;
             }
-        }
 
 
-        if(!nPlace[0].getText().equals("") && !nPlace[1].getText().equals("") && !nPlace[2].getText().equals("") && !nPlace[3].getText().equals("")) {
-            if (svaltoget.equals(edmas(
-                    nPlace[0].getText().toString() +
-                            opers[0] +
-                            nPlace[1].getText().toString() +
-                            opers[1] +
-                            nPlace[2].getText().toString() +
-                            opers[2] +
-                            nPlace[3].getText().toString()).get(0))) {
-                score++;
-                TextView sc = (TextView) findViewById(R.id.textCountDown);
-                sc.setText(String.valueOf(score));
-                setRands(10);
+            for (int i = 0; i < 4; i++) {
+                if (nPlace[i].getText().equals("") && !rNum[tag].getText().equals("")) {
+                    nPlace[i].setText(String.valueOf(values[tag]));
+                    rNum[tag].setText("");
+                    break;
+                }
+            }
+
+
+            if (!nPlace[0].getText().equals("") && !nPlace[1].getText().equals("") && !nPlace[2].getText().equals("") && !nPlace[3].getText().equals("")) {
+                if (svaltoget.equals(String.valueOf((int)Double.parseDouble(edmas(
+                        nPlace[0].getText().toString() +
+                                opers[0] +
+                                nPlace[1].getText().toString() +
+                                opers[1] +
+                                nPlace[2].getText().toString() +
+                                opers[2] +
+                                nPlace[3].getText().toString()).get(0))))) {
+                    score++;
+                    TextView sc = (TextView) findViewById(R.id.textCountDown);
+                    sc.setText(String.valueOf(score));
+                    setRands(10);
+                }
             }
         }
     }
     public void returnVal(View view){
         int tag=0;
-        switch (view.getId()){
-            case R.id.nVal1:
-                tag = 0;
-                break;
-            case R.id.nVal2:
-                tag = 1;
-                break;
-            case R.id.nVal3:
-                tag = 2;
-                break;
-            case R.id.nVal4:
-                tag = 3;
-                break;
-        }
-        for (int i=0; i<4;i++){
-            if (String.valueOf(values[i]).equals(nPlace[tag].getText().toString()) && rNum[i].getText().equals("")){
-                rNum[i].setText(String.valueOf(values[i]));
-                nPlace[tag].setText("");
-                break;
+        if (timerStat) {
+            switch (view.getId()) {
+                case R.id.nVal1:
+                    tag = 0;
+                    break;
+                case R.id.nVal2:
+                    tag = 1;
+                    break;
+                case R.id.nVal3:
+                    tag = 2;
+                    break;
+                case R.id.nVal4:
+                    tag = 3;
+                    break;
+            }
+            for (int i = 0; i < 4; i++) {
+                if (String.valueOf(values[i]).equals(nPlace[tag].getText().toString()) && rNum[i].getText().equals("")) {
+                    rNum[i].setText(String.valueOf(values[i]));
+                    nPlace[tag].setText("");
+                    break;
+                }
             }
         }
     }
