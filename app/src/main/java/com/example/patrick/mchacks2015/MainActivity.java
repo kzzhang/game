@@ -12,53 +12,52 @@ import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
-    int iTime = 0;
+    int values[] = new int[4];
+    String ops[] = new String[3];
+    Button rNum[] = new Button[4];
+    Button rOp[] = new Button [3];
+    Button nPlace[] = new Button[4];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //blah blah blah
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //variables
-        final TextView timeCountDown = (TextView) this.findViewById(R.id.textCountDown);
 
-        Button rNum1 = (Button) findViewById(R.id.rNum1);
-        Button rNum2 = (Button) findViewById(R.id.rNum2);
-        Button rNum3 = (Button) findViewById(R.id.rNum3);
-        Button rNum4 = (Button) findViewById(R.id.rNum4);
-        //objects
+        rNum[0] = (Button) findViewById(R.id.rNum1);
+        rNum[1] = (Button) findViewById(R.id.rNum2);
+        rNum[2] = (Button) findViewById(R.id.rNum3);
+        rNum[3] = (Button) findViewById(R.id.rNum4);
 
+        rOp[0] = (Button) findViewById(R.id.rOp1);
+        rOp[1] = (Button) findViewById(R.id.rOp2);
+        rOp[2] = (Button) findViewById(R.id.rOp3);
+
+        nPlace[0] = (Button) findViewById(R.id.nVal1);
+        nPlace[1] = (Button) findViewById(R.id.nVal2);
+        nPlace[2] = (Button) findViewById(R.id.nVal3);
+        nPlace[3] = (Button) findViewById(R.id.nVal4);
 
         //gen rand #s
         setRands(10);
 
-        rNum1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setRands(10);
-            }
-        });
     }
 
     private void setRands(int lim){
-        Button rNum1 = (Button) findViewById(R.id.rNum1);
-        Button rNum2 = (Button) findViewById(R.id.rNum2);
-        Button rNum3 = (Button) findViewById(R.id.rNum3);
-        Button rNum4 = (Button) findViewById(R.id.rNum4);
-
-        Button rOp1 = (Button) findViewById(R.id.rOp1);
-        Button rOp2 = (Button) findViewById(R.id.rOp2);
-        Button rOp3 = (Button) findViewById(R.id.rOp3);
-
 
         Random r = new Random();
-        rNum1.setText(String.valueOf(r.nextInt(lim)));
-        rNum2.setText(String.valueOf(r.nextInt(lim)));
-        rNum3.setText(String.valueOf(r.nextInt(lim)));
-        rNum4.setText(String.valueOf(r.nextInt(lim)));
-
-        rOp1.setText(intToChar(r.nextInt(4)));
-        rOp2.setText(intToChar(r.nextInt(4)));
-        rOp3.setText(intToChar(r.nextInt(4)));
+        int rndNum;
+        for(int i=0; i<4; i++){
+            rndNum = r.nextInt(lim)+1;
+            rNum[i].setText(String.valueOf(rndNum));
+            values[i] = rndNum;
+        }
+        String rndChar;
+        for (int i=0; i<3; i++){
+            rndChar = intToChar(r.nextInt(4));
+            rOp[i].setText(rndChar);
+            ops[i] = rndChar;
+        }
 
     }
 
@@ -75,6 +74,27 @@ public class MainActivity extends ActionBarActivity {
             default:
                 return "err";
         }
+
+    }
+
+    public void buttonClick(View view){
+        int idNum = view.getId();
+        int tag = Integer.valueOf(
+                view.getTag(
+                        idNum
+                ).toString());
+
+        Button button = (Button) findViewById(idNum);
+
+        button.setText("");
+
+        for (int i=0; i<4;i++){
+            if (nPlace[i].getText()!=""){
+                nPlace[i].setText(values[i]);
+            }
+        }
+
+        
 
     }
     @Override
