@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class MainActivity extends ActionBarActivity {
     int iTime = 0;
@@ -25,16 +27,56 @@ public class MainActivity extends ActionBarActivity {
         Button rNum4 = (Button) findViewById(R.id.rNum4);
         //objects
 
+
+        //gen rand #s
+        setRands(10);
+
         rNum1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timeCountDown.setText("8===D!");
+                setRands(10);
             }
         });
+    }
 
+    private void setRands(int lim){
+        Button rNum1 = (Button) findViewById(R.id.rNum1);
+        Button rNum2 = (Button) findViewById(R.id.rNum2);
+        Button rNum3 = (Button) findViewById(R.id.rNum3);
+        Button rNum4 = (Button) findViewById(R.id.rNum4);
+
+        Button rOp1 = (Button) findViewById(R.id.rOp1);
+        Button rOp2 = (Button) findViewById(R.id.rOp2);
+        Button rOp3 = (Button) findViewById(R.id.rOp3);
+
+
+        Random r = new Random();
+        rNum1.setText(String.valueOf(r.nextInt(lim)));
+        rNum2.setText(String.valueOf(r.nextInt(lim)));
+        rNum3.setText(String.valueOf(r.nextInt(lim)));
+        rNum4.setText(String.valueOf(r.nextInt(lim)));
+
+        rOp1.setText(intToChar(r.nextInt(4)));
+        rOp2.setText(intToChar(r.nextInt(4)));
+        rOp3.setText(intToChar(r.nextInt(4)));
 
     }
 
+    private String intToChar(int c){
+        switch (c){
+            case 0:
+                return "+";
+            case 1:
+                return "-";
+            case 2:
+                return "/";
+            case 3:
+                return "*";
+            default:
+                return "err";
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
