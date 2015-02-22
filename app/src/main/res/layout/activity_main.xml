@@ -231,7 +231,7 @@
             android:layout_alignEnd="@+id/rNum4"
             android:onClick="startTime"
             android:layout_weight="0.77"
-            android:background="#ffffffff"
+            android:background="@color/brightOrange"
             android:layout_marginBottom="3dp"
             android:layout_marginTop="3dp" />
 
