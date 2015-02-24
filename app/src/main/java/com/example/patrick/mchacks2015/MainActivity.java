@@ -79,11 +79,13 @@ public class MainActivity extends ActionBarActivity {
             startButton.setText("Time's up!");
             startButton.setBackgroundColor(getResources().getColor(R.color.brightOrange));
             timerStat = false;
+            time = 60000;
         }
 
         @Override
         public void onTick(long millisUntilFinished) {
             startButton.setText("" + millisUntilFinished/1000);
+            time = millisUntilFinished;
         }
     }
 
@@ -124,6 +126,13 @@ public class MainActivity extends ActionBarActivity {
             rndChar = intToChar(r.nextInt(4));
             rOp[i].setText(rndChar);
             opers[i] = rndChar;
+        }
+        if (rOp[0]==rOp[1] && rOp[1] == rOp[2]){
+            while (rOp[1]==rOp[2]){
+                rndChar = intToChar(r.nextInt(4));
+                rOp[2].setText(rndChar);
+                opers[2] = rndChar;
+            }
         }
         String calcStr = String.valueOf(
                 values[setOrder[0]])+
@@ -198,6 +207,10 @@ public class MainActivity extends ActionBarActivity {
                                 opers[2] +
                                 nPlace[3].getText().toString()).get(0))))) {
                     score++;
+                    timer.cancel();
+                    time += 5000;
+                    timer = new CountDownTimerActivity(time, delay);
+                    timer.start();
                     TextView sc = (TextView) findViewById(R.id.textCountDown);
                     sc.setText(String.valueOf(score));
                     setRands(10);
