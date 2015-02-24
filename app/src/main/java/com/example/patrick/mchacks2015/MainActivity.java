@@ -17,11 +17,11 @@ import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
-    int values[] = new int[4];
-    String opers[] = new String[3];
-    Button rNum[] = new Button[4];
-    Button rOp[] = new Button [3];
-    Button nPlace[] = new Button[4];
+    int values[];
+    String opers[];
+    Button rNum[];
+    Button rOp[];
+    Button nPlace[];
     String svaltoget;
     TextView valToGet;
 
@@ -43,6 +43,12 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
+        values = new int[4];
+        opers = new String[3];
+        rNum = new Button[4];
+        rOp = new Button[4];
+        nPlace = new Button[4];
+
         rNum[0] = (Button) findViewById(R.id.rNum1);
         rNum[1] = (Button) findViewById(R.id.rNum2);
         rNum[2] = (Button) findViewById(R.id.rNum3);
@@ -60,10 +66,6 @@ public class MainActivity extends ActionBarActivity {
         valToGet = (TextView) findViewById(R.id.strToGetTo);
 
         startButton = (Button) findViewById(R.id.startButton);
-
-
-
-        //gen rand #s
 
     }
 
@@ -102,11 +104,20 @@ public class MainActivity extends ActionBarActivity {
 
         Random r = new Random();
         int rndNum;
+        int setOrder[] = {0,1,2,3};
+        for(int i=3; i>0; i--){
+            int index = r.nextInt(i+1);
+
+            int a = setOrder[index];
+            setOrder[index] = setOrder[i];
+            setOrder[i] = a;
+        }
+        
         for(int i=0; i<4; i++){
             nPlace[i].setText("");
             rndNum = r.nextInt(lim)+1;
-            rNum[i].setText(String.valueOf(rndNum));
-            values[i] = rndNum;
+            rNum[setOrder[i]].setText(String.valueOf(rndNum));
+            values[setOrder[i]] = rndNum;
         }
         String rndChar;
         for (int i=0; i<3; i++){
@@ -114,7 +125,15 @@ public class MainActivity extends ActionBarActivity {
             rOp[i].setText(rndChar);
             opers[i] = rndChar;
         }
-        String calcStr = String.valueOf(values[0])+opers[0]+String.valueOf(values[1])+opers[1]+String.valueOf(values[2])+opers[2]+String.valueOf(values[3]);
+        String calcStr = String.valueOf(
+                values[setOrder[0]])+
+                opers[0]+
+                String.valueOf(values[setOrder[1]])+
+                opers[1]+
+                String.valueOf(values[setOrder[2]])+
+                opers[2]+
+                String.valueOf(values[setOrder[3]]);
+
         svaltoget = edmas(calcStr).get(0);
         if (Double.parseDouble(svaltoget) % 1.0 != 0.0) {
             setRands(10);
@@ -167,7 +186,7 @@ public class MainActivity extends ActionBarActivity {
 
 
             if (!nPlace[0].getText().equals("") && !nPlace[1].getText().equals("") && !nPlace[2].getText().equals("") && !nPlace[3].getText().equals("")) {
-                if (svaltoget.equals(String.valueOf((int)Double.parseDouble(edmas(
+                if (svaltoget.equals(String.valueOf((int) Double.parseDouble(edmas(
                         nPlace[0].getText().toString() +
                                 opers[0] +
                                 nPlace[1].getText().toString() +
