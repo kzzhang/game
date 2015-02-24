@@ -129,13 +129,14 @@ public class MainActivity extends ActionBarActivity {
             opers[i] = rndChar;
         }
         //code doesn't work...? you are comparing buttons
-//        if (rOp[0]==rOp[1] && rOp[1] == rOp[2]){
-//            while (rOp[1]==rOp[2]){
-//                rndChar = intToChar(r.nextInt(4));
-//                rOp[2].setText(rndChar);
-//                opers[2] = rndChar;
-//            }
-//        }
+        if (opers[0].equals(opers[1]) && opers[1].equals(opers[2])){
+            while (opers[1].equals(opers[2])){
+                rndChar = intToChar(r.nextInt(4));
+                rOp[2].setText(rndChar);
+                opers[2] = rndChar;
+            }
+        }
+
         String calcStr = String.valueOf(
                 values[setOrder[0]])+
                 opers[0]+
