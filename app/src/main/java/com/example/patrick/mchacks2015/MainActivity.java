@@ -96,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
             startButton.setBackgroundColor(getResources().getColor(R.color.white));
             sc.setText(String.valueOf(score));
             time = 60000;
+            timer = new CountDownTimerActivity(time, delay);
             timer.start();
             timerStat = true;
             setRands(10);
@@ -127,13 +128,14 @@ public class MainActivity extends ActionBarActivity {
             rOp[i].setText(rndChar);
             opers[i] = rndChar;
         }
-        if (rOp[0]==rOp[1] && rOp[1] == rOp[2]){
-            while (rOp[1]==rOp[2]){
-                rndChar = intToChar(r.nextInt(4));
-                rOp[2].setText(rndChar);
-                opers[2] = rndChar;
-            }
-        }
+        //code doesn't work...? you are comparing buttons
+//        if (rOp[0]==rOp[1] && rOp[1] == rOp[2]){
+//            while (rOp[1]==rOp[2]){
+//                rndChar = intToChar(r.nextInt(4));
+//                rOp[2].setText(rndChar);
+//                opers[2] = rndChar;
+//            }
+//        }
         String calcStr = String.valueOf(
                 values[setOrder[0]])+
                 opers[0]+
