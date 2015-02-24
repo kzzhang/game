@@ -159,6 +159,8 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+
+
     public void buttonClick(View view){
         int tag=0;
         if (timerStat) {
