@@ -139,7 +139,6 @@ public class MainActivity extends ActionBarActivity {
             setRands(10);
         }
 
-
         svaltoget = String.valueOf((int)Double.parseDouble(svaltoget));
         valToGet.setText("="+svaltoget);
     }
