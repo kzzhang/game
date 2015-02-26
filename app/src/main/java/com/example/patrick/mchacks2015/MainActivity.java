@@ -79,6 +79,7 @@ public class MainActivity extends ActionBarActivity {
         }
         for(int i=0; i<3; i++){
             bROps[i].setText("");
+            bROps[i].getBackground().setAlpha(128);
         }
         for(Button numPlaceButton: bNumPlace){
             numPlaceButton.setText("");
@@ -96,7 +97,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-            startButton.setText("Restart");
+            startButton.setText("Times Up. Restart?");
             startButton.setBackgroundColor(getResources().getColor(R.color.foreColor));
             boolTimer = false;
             lTime = 60000;
