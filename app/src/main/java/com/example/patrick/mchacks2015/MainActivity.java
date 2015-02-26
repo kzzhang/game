@@ -96,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-            startButton.setText("Time's up!");
+            startButton.setText("Restart");
             startButton.setBackgroundColor(getResources().getColor(R.color.foreColor));
             boolTimer = false;
             lTime = 60000;
