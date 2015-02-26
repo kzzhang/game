@@ -3,4 +3,7 @@
     <color name="brightOrange">#FFFB9100</color>
     <color name="baby_blue">#FF7EC6FF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="foreColor">#FF3CB8FF</color>
+    <color name="midColor">#FFFFFFFF</color>
+    <color name="backColor">#FF001530</color>
 </resources>

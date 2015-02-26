@@ -21,9 +21,10 @@ public class MainActivity extends ActionBarActivity {
     String sOperators[];
     Button bRNums[];
     Button bROps[];
-    Button bOperators[];
+    Button bNumPlace[];
     String sSolution;
     TextView tvSoloution;
+    TextView tvScore;
 
     Boolean boolTimer = false;
     long lTime = 60000;
@@ -47,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
         sOperators = new String[3];
         bRNums = new Button[4];
         bROps = new Button[4];
-        bOperators = new Button[4];
+        bNumPlace = new Button[4];
 
         bRNums[0] = (Button) findViewById(R.id.rNum1);
         bRNums[1] = (Button) findViewById(R.id.rNum2);
@@ -58,14 +59,33 @@ public class MainActivity extends ActionBarActivity {
         bROps[1] = (Button) findViewById(R.id.rOp2);
         bROps[2] = (Button) findViewById(R.id.rOp3);
 
-        bOperators[0] = (Button) findViewById(R.id.nVal1);
-        bOperators[1] = (Button) findViewById(R.id.nVal2);
-        bOperators[2] = (Button) findViewById(R.id.nVal3);
-        bOperators[3] = (Button) findViewById(R.id.nVal4);
+        bNumPlace[0] = (Button) findViewById(R.id.nVal1);
+        bNumPlace[1] = (Button) findViewById(R.id.nVal2);
+        bNumPlace[2] = (Button) findViewById(R.id.nVal3);
+        bNumPlace[3] = (Button) findViewById(R.id.nVal4);
 
         tvSoloution = (TextView) findViewById(R.id.strToGetTo);
 
         startButton = (Button) findViewById(R.id.startButton);
+        tvScore = (TextView) findViewById(R.id.textScore);
+
+    }
+
+    public void restart(View view){
+        timer.cancel();
+        boolTimer = false;
+        for(Button numButton: bRNums){
+            numButton.setText("");
+        }
+        for(int i=0; i<3; i++){
+            bROps[i].setText("");
+        }
+        for(Button numPlaceButton: bNumPlace){
+            numPlaceButton.setText("");
+        }
+        startButton.setText("Start");
+        tvSoloution.setText("=");
+        tvScore.setText("0");
 
     }
 
@@ -76,8 +96,8 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
-            startButton.setText("lTime's up!");
-            startButton.setBackgroundColor(getResources().getColor(R.color.brightOrange));
+            startButton.setText("Time's up!");
+            startButton.setBackgroundColor(getResources().getColor(R.color.foreColor));
             boolTimer = false;
             lTime = 60000;
         }
@@ -92,8 +112,6 @@ public class MainActivity extends ActionBarActivity {
     public void startTime(View view){
         if(!boolTimer){
             score = 0;
-            TextView tvScore = (TextView) findViewById(R.id.textScore);
-            startButton.setBackgroundColor(getResources().getColor(R.color.white));
             tvScore.setText(String.valueOf(score));
             lTime = 60000;
             timer = new CountDownTimerActivity(lTime, lDelay);
@@ -117,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
         }
         
         for(int i=0; i<4; i++){
-            bOperators[i].setText("");
+            bNumPlace[i].setText("");
             rndNum = r.nextInt(lim)+1;
             bRNums[setOrder[i]].setText(String.valueOf(rndNum));
             iQVals[setOrder[i]] = rndNum;
@@ -193,29 +211,29 @@ public class MainActivity extends ActionBarActivity {
 
 
             for (int i = 0; i < 4; i++) {
-                if (bOperators[i].getText().equals("") && !bRNums[tag].getText().equals("")) {
-                    bOperators[i].setText(String.valueOf(iQVals[tag]));
+                if (bNumPlace[i].getText().equals("") && !bRNums[tag].getText().equals("")) {
+                    bNumPlace[i].setText(String.valueOf(iQVals[tag]));
                     bRNums[tag].setText("");
                     break;
                 }
             }
 
 
-            if (!bOperators[0].getText().equals("") && !bOperators[1].getText().equals("") && !bOperators[2].getText().equals("") && !bOperators[3].getText().equals("")) {
+            if (!bNumPlace[0].getText().equals("") && !bNumPlace[1].getText().equals("") && !bNumPlace[2].getText().equals("") && !bNumPlace[3].getText().equals("")) {
                 if (sSolution.equals(String.valueOf((int) Double.parseDouble(edmas(
-                        bOperators[0].getText().toString() +
+                        bNumPlace[0].getText().toString() +
                                 sOperators[0] +
-                                bOperators[1].getText().toString() +
+                                bNumPlace[1].getText().toString() +
                                 sOperators[1] +
-                                bOperators[2].getText().toString() +
+                                bNumPlace[2].getText().toString() +
                                 sOperators[2] +
-                                bOperators[3].getText().toString()).get(0))))) {
+                                bNumPlace[3].getText().toString()).get(0))))) {
                     score++;
                     timer.cancel();
                     lTime += 5000;
                     timer = new CountDownTimerActivity(lTime, lDelay);
                     timer.start();
-                    TextView tvScore = (TextView) findViewById(R.id.textScore);
+
                     tvScore.setText(String.valueOf(score));
                     setRands(10);
                 }
@@ -240,9 +258,9 @@ public class MainActivity extends ActionBarActivity {
                     break;
             }
             for (int i = 0; i < 4; i++) {
-                if (String.valueOf(iQVals[i]).equals(bOperators[tag].getText().toString()) && bRNums[i].getText().equals("")) {
+                if (String.valueOf(iQVals[i]).equals(bNumPlace[tag].getText().toString()) && bRNums[i].getText().equals("")) {
                     bRNums[i].setText(String.valueOf(iQVals[i]));
-                    bOperators[tag].setText("");
+                    bNumPlace[tag].setText("");
                     break;
                 }
             }
