@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="brightOrange">#FFFB9100</color>
-    <color name="baby_blue">#FF7EC6FF</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="baby_blue">#ff00b3fd</color>
+    <color name="white">#FFFFFFF9</color>
     <color name="foreColor">#FF3CB8FF</color>
     <color name="midColor">#FFFFFFFF</color>
     <color name="backColor">#FF001530</color>

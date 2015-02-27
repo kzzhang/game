@@ -25,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
     String sSolution;
     TextView tvSoloution;
     TextView tvScore;
+    Button restartButton;
 
     Boolean boolTimer = false;
     long lTime = 60000;
@@ -69,24 +70,36 @@ public class MainActivity extends ActionBarActivity {
         startButton = (Button) findViewById(R.id.startButton);
         tvScore = (TextView) findViewById(R.id.textScore);
 
+        restartButton = (Button) findViewById(R.id.btnRestart);
+
+        restartButton.callOnClick();
+
     }
 
     public void restart(View view){
         timer.cancel();
         boolTimer = false;
+
+        bROps[0].getBackground().setAlpha(128);
+        bRNums[0].getBackground().setAlpha(128);
+        restartButton.getBackground().setAlpha(128);
+
+
+        startButton.setAlpha(255);
+
         for(Button numButton: bRNums){
             numButton.setText("");
         }
         for(int i=0; i<3; i++){
             bROps[i].setText("");
-            bROps[i].getBackground().setAlpha(128);
+
         }
         for(Button numPlaceButton: bNumPlace){
             numPlaceButton.setText("");
         }
         startButton.setText("Start");
-        tvSoloution.setText("=");
-        tvScore.setText("0");
+        tvSoloution.setText("");
+        tvScore.setText("Score: 0");
 
     }
 
@@ -97,8 +110,9 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onFinish() {
+            restartButton.callOnClick();
             startButton.setText("Times Up. Restart?");
-            startButton.setBackgroundColor(getResources().getColor(R.color.foreColor));
+            startButton.setBackgroundColor(getResources().getColor(R.color.baby_blue));
             boolTimer = false;
             lTime = 60000;
         }
@@ -112,8 +126,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void startTime(View view){
         if(!boolTimer){
+            bROps[0].getBackground().setAlpha(255);
+            bRNums[0].getBackground().setAlpha(255);
             score = 0;
-            tvScore.setText(String.valueOf(score));
+            tvScore.setText("Score: " + String.valueOf(score));
             lTime = 60000;
             timer = new CountDownTimerActivity(lTime, lDelay);
             timer.start();
@@ -235,7 +251,7 @@ public class MainActivity extends ActionBarActivity {
                     timer = new CountDownTimerActivity(lTime, lDelay);
                     timer.start();
 
-                    tvScore.setText(String.valueOf(score));
+                    tvScore.setText("Score: " + String.valueOf(score));
                     setRands(10);
                 }
             }
