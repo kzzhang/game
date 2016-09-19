@@ -1,0 +1,4 @@
+Highscores
+Multiplayer
+Pause
+Scaling Diff -  Increase val as score increases
