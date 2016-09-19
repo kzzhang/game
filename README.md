@@ -1,8 +1,6 @@
-# game
+Simple math game developed for Android
 --
-Made for McHacks 2015 
-
-Still under development
+Made for McHacks 2015 by Patrick Hum and Kevin Zhan
 
 Game:
 
@@ -21,3 +19,5 @@ opers[+,-,*]
 put into order to get 18
 
 Ans would be 5,9,8,3
+
+Try to solve highest possible number of questions within time limit. Answering questions correctly adds time.
