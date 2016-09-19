@@ -1,6 +1,6 @@
 Simple math game developed for Android
 --
-Made for McHacks 2015 by Patrick Hum and Kevin Zhan
+Made for McHacks 2015 by Patrick Hum and Kevin Zhang
 
 Game:
 
