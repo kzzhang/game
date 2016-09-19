@@ -1,6 +1,7 @@
 Simple math game developed for Android
 --
 Made for McHacks 2015 by Patrick Hum and Kevin Zhang
+http://devpost.com/software/fasthacks
 
 Game:
 
